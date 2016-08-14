@@ -116,9 +116,9 @@ angular.module('app', ['ui.bootstrap'])
   };
 
   $scope.initInfo = function (data) {
-    $http.get("./php/selectAll.php").then(function(response) {
-      $scope.remedios = $scope.remedios.concat(response.data);
-      $scope.initRemedios = $scope.initRemedios.concat(response.data);
+    $http.get("./php/selectAll.php").then(function(responseData) {
+      $scope.remedios = $scope.remedios.concat(responseData.data);
+      $scope.initRemedios = $scope.initRemedios.concat(responseData.data);
     }, function(errorResponse) {
       console.log(errorResponse);
     });

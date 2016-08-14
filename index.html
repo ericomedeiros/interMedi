@@ -18,7 +18,7 @@
     <script src="./js/angular.min.js"></script>
     <script src="./js/ui-bootstrap-tpls-1.3.3.min.js"></script>
     <script src="./js/index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" ></script>
+    <script src="./js/jquery.min.js" ></script>
   </head>
 
   <body ng-controller="mainController" ng-init="initInfo()">
@@ -110,10 +110,10 @@
             </thead>
             <tbody>
               <tr ng-repeat="resultadoReact in resultadosReact">
-                <th>{{resultadoReact.id_react_rem}}</th> 
+                <th>{{resultadoReact.id_reac_rem}}</th> 
                 <th>{{resultadoReact.id_med1}}</th> 
                 <th>{{resultadoReact.id_med2}}</th> 
-                <th>{{resultadoReact.id_react_rem}}</th>
+                <th>{{resultadoReact.rea_type}}</th>
               </tr>
             </tbody>
           </table>          
