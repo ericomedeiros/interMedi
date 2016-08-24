@@ -125,6 +125,10 @@ angular.module('app', ['ui.bootstrap'])
   };
 
   $scope.procurar = function () {
+    if ($scope.selecionados.length == 0){
+      alert("Selecione pelos menos um remédio");
+      return;
+    } 
     var table = [];
     for (var i = 0; $scope.selecionados.length > i; i++) {
       table.push($scope.selecionados[i].id_remedio);

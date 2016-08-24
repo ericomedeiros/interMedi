@@ -13,7 +13,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM reac_rem WHERE id_med1 IN (".implode(",",$request).") and id_med2 IN (".implode(",",$request).")";
+if ($request.length() == 1) {
+	$sql = "SELECT * FROM reac_rem WHERE id_med1 IN (".implode(",",$request).") or id_med2 IN (".implode(",",$request).")";
+}else{
+	$sql = "SELECT * FROM reac_rem WHERE id_med1 IN (".implode(",",$request).") and id_med2 IN (".implode(",",$request).")";
+}
+
 $result = $conn->query($sql);
 
 $json = mysqli_fetch_all($result,MYSQLI_ASSOC);
