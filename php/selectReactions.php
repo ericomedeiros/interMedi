@@ -5,6 +5,7 @@ $password = "";
 $dbname = "test";
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
+$sql = "";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,7 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-if ($request.length() == 1) {
+if (sizeof($request) == 1) {
 	$sql = "SELECT * FROM reac_rem WHERE id_med1 IN (".implode(",",$request).") or id_med2 IN (".implode(",",$request).")";
 }else{
 	$sql = "SELECT * FROM reac_rem WHERE id_med1 IN (".implode(",",$request).") and id_med2 IN (".implode(",",$request).")";
