@@ -1,5 +1,5 @@
 // create our angular app and inject ui.bootstrap
-angular.module('app', ['ui.bootstrap'])
+angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
 
 .controller('mainController', function($scope, $http) {
   
