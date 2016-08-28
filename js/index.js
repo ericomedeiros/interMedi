@@ -108,6 +108,16 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
   $scope.selecionados = [];
   $scope.initRemedios = [];
   $scope.resultadosReact = [];
+  $scope.resultClassType = [
+    {"c": "success"},
+    {"v": "warning"},
+    {"i": "danger"}
+  ];
+  $scope.resultTextType = [
+    {"c": "Compativel"},
+    {"v": "Variavel"},
+    {"i": "Incopativel"}
+  ];
 
   $scope.selecionar = function (argument) {
     var temp = argument;
@@ -142,7 +152,6 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
         //Second function handles error
         $scope.content = "Something went wrong";
     });
-    
   };
 
   $scope.limparSelecao = function () {
@@ -150,5 +159,4 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
     $scope.remedios = $scope.remedios.concat($scope.initRemedios);
     $scope.selecionados = [];
   };
-
 });
