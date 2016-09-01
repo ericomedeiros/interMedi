@@ -8,3 +8,17 @@ body {
     overflow-x: hidden;
 }
 
+.scrollable-menu.selectedRem {
+	height: auto;
+    max-height: 204px;
+    overflow-x: hidden;
+}
+
+.alertas {
+	width: 300px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform:translateX(-150px);
+}
+

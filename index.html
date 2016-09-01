@@ -34,6 +34,14 @@
        HEADER
     *********************************-->
 
+    <!--*********************************
+       ALERTS
+    *********************************-->
+    <div uib-alert ng-repeat="alert in alerts" class="alertas" ng-class="'alert-' + (alert.type || 'warning')" dismiss-on-timeout="alert.time" close="closeAlert($index)">{{alert.msg}}</div>
+    <!--*********************************
+       ALERTS
+    *********************************-->
+
     <div class="container">
       <!--*********************************
           MAIN CONTENT
@@ -49,7 +57,7 @@
           <p>Escolhendo um remedio, é verificado as ligações dele com todos remédios regisrados. Selecionando mais de um é verificado todas combinações dentro da seleção.</p>
           <form>
             <div class="form-group" >
-              <input id="src_med1" ng-model="searchText" type="text" placeholder="Medicamento" class="form-control">
+              <input ng-model="searchText" type="text" placeholder="Medicamento" class="form-control">
             </div>
             <!--*********************************
                 Remedies options
@@ -74,7 +82,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading">Selecionados</div>
                 <div class="panel-body">
-                  <ul class="list-group scrollable-menu">
+                  <ul class="list-group scrollable-menu selectedRem">
                     <button type="button" class="list-group-item" ng-repeat="selecionado in selecionados">{{selecionado.rem_name}}</button>
                     <button class="animate-repeat list-group-item" ng-if="selecionados.length == 0">
                       <strong>Nenhum remedio selecionado</strong>
@@ -87,8 +95,8 @@
             <!--*********************************
                 Remedies selected
             *********************************-->
-            <div class="form-group col-sm-12 col-md-12 col-lg-12">
-              <button type="submit" ng-click="procurar()" class="btn btn-success btn-lg">Procurar</button>
+            <div class="form-group">
+              <button type="submit" ng-click="procurar()" class="btn btn-success btn-lg col-sm-12 col-md-12 col-lg-12">Procurar</button>
             </div>
           </form>
         </div>
