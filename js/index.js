@@ -6,8 +6,6 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
   // BUTTONS ======================
   
   // define some random object and button values
-  $scope.collapse = false;
-  $scope.remedios = [];
   $scope.remediosRange = [
     "voriconazol",
     "vancomicina",
@@ -105,19 +103,6 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
       "acido tranexamico",
       "aciclovir"
     ];
-  $scope.selecionados = [];
-  $scope.initRemedios = [];
-  $scope.resultadosReact = [];
-  $scope.resultClassType = [
-    {"c": "success"},
-    {"v": "warning"},
-    {"i": "danger"}
-  ];
-  $scope.resultTextType = [
-    {"c": "Compativel"},
-    {"v": "Variavel"},
-    {"i": "Incopativel"}
-  ];
 
   $scope.selecionar = function (argument) {
     var temp = argument;
@@ -126,6 +111,21 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
   };
 
   $scope.initInfo = function (data) {
+
+    $scope.collapse             = false;
+    $scope.remedios             = [];
+    $scope.selecionados         = [];
+    $scope.initRemedios         = [];
+    $scope.resultadosReact      = [];
+    $scope.resultTextType       = new Array();
+    $scope.resultClassType      = new Array();
+    $scope.resultClassType["c"] = "success";
+    $scope.resultClassType["v"] = "warning";
+    $scope.resultClassType["i"] = "danger";
+    $scope.resultTextType["c"]  = "Compativel";
+    $scope.resultTextType["v"]  = "Variavel";
+    $scope.resultTextType["i"]  = "Incopativel";
+
     $http.get("./php/selectAll.php").then(function(responseData) {
       $scope.remedios = $scope.remedios.concat(responseData.data);
       $scope.initRemedios = $scope.initRemedios.concat(responseData.data);

@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 echo "[";
 echo json_encode($result->fetch_assoc());
 while ($row = $result->fetch_assoc()) {
-	echo ',{"id_remedio":"'.$row["id_remedio"].'","rem_name":"'.$row["rem_name"].'"}';
+	echo utf8_encode(',{"id_remedio":"'.$row["id_remedio"].'","rem_name":"'.$row["rem_name"].'"}');
 }
 echo "]";
 $conn->close();

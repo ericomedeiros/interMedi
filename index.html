@@ -113,8 +113,8 @@
             <tbody>
               <tr ng-repeat="resultadoReact in resultadosReact" ng-class="resultClassType[resultadoReact.rea_type]">
                 <th>{{resultadoReact.id_reac_rem}}</th> 
-                <th>{{getMedNome(resultadoReact.id_med1)}}</th> 
-                <th>{{getMedNome(resultadoReact.id_med2)}}</th> 
+                <th>{{(selecionados | filter:{id_remedio:resultadoReact.id_med1})[0].rem_name}}</th> 
+                <th>{{(selecionados | filter:{id_remedio:resultadoReact.id_med2})[0].rem_name}}</th> 
                 <th>{{resultTextType[resultadoReact.rea_type]}}</th>
               </tr>
             </tbody>
@@ -128,7 +128,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2015 Company, Inc.</p>
+        <p>&copy; Desenvolvido por Érico Medeiros</p>
       </footer>
     </div> <!-- /container -->
   </body>
