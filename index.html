@@ -37,7 +37,9 @@
     <!--*********************************
        ALERTS
     *********************************-->
-    <div uib-alert ng-repeat="alert in alerts" class="alertas" ng-class="'alert-' + (alert.type || 'warning')" dismiss-on-timeout="alert.time" close="closeAlert($index)">{{alert.msg}}</div>
+    <div class="alertas">
+      <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+    </div>
     <!--*********************************
        ALERTS
     *********************************-->
@@ -54,7 +56,7 @@
         </h1>
         
         <div class="col-sm-12 col-md-12 col-lg-12 colapsable" uib-collapse="collapse">
-          <p>Escolhendo um remedio, é verificado as ligações dele com todos remédios regisrados. Selecionando mais de um é verificado todas combinações dentro da seleção.</p>
+          <p>Escolhendo um remédio, é verificado as ligações dele com todos remédios regisrados. Selecionando mais de um é verificado todas combinações dentro da seleção.</p>
           <form>
             <div class="form-group" >
               <input ng-model="searchText" type="text" placeholder="Medicamento" class="form-control">

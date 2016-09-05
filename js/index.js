@@ -6,8 +6,8 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
   // BUTTONS ======================
   
   // define some random object and button values
-  $scope.showAlert = function (text, tipo, tempo) {
-    $scope.alerts.push({msg: text, type: tipo, time: tempo});
+  $scope.showAlert = function (text, tipo) {
+    $scope.alerts.push({msg: text, type: tipo});
   };
 
   $scope.closeAlert = function(index) {
@@ -24,7 +24,7 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
   $scope.initInfo = function (data) {
 
     $scope.collapse             = false;
-    $scope.alert                = [];
+    $scope.alerts               = new Array();
     $scope.remedios             = [];
     $scope.selecionados         = [];
     $scope.initRemedios         = [];
@@ -34,22 +34,22 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
     $scope.resultClassType["c"] = "success";
     $scope.resultClassType["v"] = "warning";
     $scope.resultClassType["i"] = "danger";
-    $scope.resultTextType["c"]  = "Compativel";
-    $scope.resultTextType["v"]  = "Variavel";
-    $scope.resultTextType["i"]  = "Incopativel";
+    $scope.resultTextType["c"]  = "Compátivel";
+    $scope.resultTextType["v"]  = "Variável";
+    $scope.resultTextType["i"]  = "Incopatível";
 
     $http.get("./php/selectAll.php").then(function(responseData) {
       $scope.remedios = $scope.remedios.concat(responseData.data);
       $scope.initRemedios = $scope.initRemedios.concat(responseData.data);
     }, function(errorResponse) {
       console.log(errorResponse);
-      $scope.showAlert(errorResponse, "danger", "none");
+      $scope.showAlert(errorResponse, "danger");
     });
   };
 
   $scope.procurar = function () {
     if ($scope.selecionados.length == 0){
-      $scope.showAlert("Selecione pelos menos um remédio", "", "none");
+      $scope.showAlert("Selecione pelos menos um remédio", "");
       return;
     } 
     var table = [];
@@ -58,16 +58,14 @@ angular.module('app', ['ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate'])
     }
     $http.post("./php/selectReactions.php", table)
     .then(function(response) {
-        //First function handles success
         $scope.resultadosReact = response.data;
         if($scope.resultadosReact.length > 0) {
           $scope.collapse = true;
         }else{
-          $scope.showAlert("Não foi encontrado registro de interações com os remedios selecionados", "", "none");
+          $scope.showAlert("Não foi encontrado registro de interações com os remédios selecionados", "");
         }
     }, function(response) {
-        //Second function handles error
-        $scope.content = "Something went wrong";
+        $scope.showAlert(errorResponse, "danger");
     });
   };
 

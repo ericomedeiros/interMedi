@@ -15,10 +15,11 @@ body {
 }
 
 .alertas {
-	width: 300px;
+	width: 400px;
 	position: fixed;
-	top: 50%;
+	top: 20%;
 	left: 50%;
-	transform:translateX(-150px);
+	transform:translateX(-200px);
+	z-index: 1;
 }
 
